@@ -8,6 +8,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+// Todo: 빌더 어노테이션 뭐하는 놈이냐!
 @Entity
 @Getter
 @Setter

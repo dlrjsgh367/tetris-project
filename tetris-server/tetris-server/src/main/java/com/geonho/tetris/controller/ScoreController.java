@@ -18,6 +18,7 @@ public class ScoreController {
     @PostMapping("/score")
     public ResponseEntity<?> submitScore(@RequestBody ScoreRequest req) {
         scoreService.saveScore(req);
+        // Todo: ok() 메서드 뭐지?
         return ResponseEntity.ok().build();
     }
 
