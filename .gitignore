@@ -1,0 +1,54 @@
+# ===== 공통 =====
+.DS_Store
+*.log
+
+# ===== Java/Maven =====
+target/
+build/
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# ===== JavaFX (IntelliJ out folder) =====
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# ===== IDE 별 =====
+
+# ▶ IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# ▶ Eclipse / STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# ▶ NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ▶ VS Code
+.vscode/
+
+# ===== 기타 =====
+
+# Spring Initializr 기본 파일
+tetris-server/tetris-server/HELP.md
