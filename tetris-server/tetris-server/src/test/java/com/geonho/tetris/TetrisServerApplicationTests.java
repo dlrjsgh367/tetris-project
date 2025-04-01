@@ -1,4 +1,4 @@
-package com.geonho.tetris.tetris_server;
+package com.geonho.tetris;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
