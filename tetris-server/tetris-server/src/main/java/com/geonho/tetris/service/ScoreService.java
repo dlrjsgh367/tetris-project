@@ -27,6 +27,13 @@ public class ScoreService {
     }
 
     public List<ScoreResponse> getTop10Scores() {
-        return scoreRepository.findTop10ByOrderByScoreDesc();
+        return scoreRepository.findTop10ByOrderByScoreDesc()
+                .stream()
+                .map(score -> ScoreResponse.builder()
+                        .player(score.getPlayer())
+                        .score(score.getScore())
+                        .duration(score.getDuration())
+                        .build())
+                .toList();
     }
 }
