@@ -1,4 +1,4 @@
-package com.geonho.tetris.tetris_server;
+package com.geonho.tetris;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
