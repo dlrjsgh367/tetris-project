@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.geonho.tetris</groupId>
-    <artifactId>TetrisGui</artifactId>
+    <artifactId>tetris-gui</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>tetris-gui</name>
 
@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.geonho.tetris.tetrisgui/com.geonho.tetris.HelloApplication
+                            <mainClass>com.geonho.tetris.tetrisgui/com.geonho.tetris.tetrisgui.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
