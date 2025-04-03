@@ -1,12 +1,16 @@
 package com.geonho.tetris.tetrisgui;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.Random;
 
@@ -16,29 +20,55 @@ public class TetrisGame extends Application {
     private static final int WIDTH = 10;
     private static final int HEIGHT = 20;
 
+    private Canvas canvas;
+    private GraphicsContext gc;
+
     private TetrominoType currentTetromino;
-    private int currentX = 3;  // 시작 위치 (중앙)
+    private int currentX = 3;
     private int currentY = 0;
 
     private final Random random = new Random();
 
     @Override
     public void start(Stage primaryStage) {
-        Canvas canvas = new Canvas(WIDTH * BLOCK_SIZE, HEIGHT * BLOCK_SIZE);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        canvas = new Canvas(WIDTH * BLOCK_SIZE, HEIGHT * BLOCK_SIZE);
+        gc = canvas.getGraphicsContext2D();
 
-        // 블록 선택
         currentTetromino = getRandomTetromino();
 
-        // 화면 그리기
-        drawField(gc);
-        drawTetromino(gc, currentTetromino, currentX, currentY);
+        draw();
 
-        StackPane root = new StackPane(canvas);
-        Scene scene = new Scene(root);
-        primaryStage.setTitle("Tetris - 랜덤 블록 그리기");
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), e -> {
+            currentY++;
+            draw();
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
+        Scene scene = new Scene(new StackPane(canvas));
+        scene.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.LEFT) {
+                currentX--;
+                draw();
+            } else if (e.getCode() == KeyCode.RIGHT) {
+                currentX++;
+                draw();
+            } else if (e.getCode() == KeyCode.DOWN) {
+                currentY++;
+                draw();
+            }
+        });
+
+        primaryStage.setTitle("Tetris - 자동 낙하 + 이동");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        canvas.requestFocus();
+    }
+
+    private void draw() {
+        drawField(gc);
+        drawTetromino(gc, currentTetromino, currentX, currentY);
     }
 
     private void drawField(GraphicsContext gc) {
